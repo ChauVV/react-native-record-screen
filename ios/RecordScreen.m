@@ -166,7 +166,12 @@ RCT_REMAP_METHOD(startRecording, resolve:(RCTPromiseResolveBlock)resolve rejecte
                         }
                     } completionHandler:^(NSError* error) {
                         NSLog(@"startCapture: %@", error);
-                        resolve(@"started");
+                       
+                      if (error) {
+                         resolve(@"error");
+                      } else {
+                         resolve(@"started");
+                      }
                     }];
                 } else {
                     // Fallback on earlier versions
